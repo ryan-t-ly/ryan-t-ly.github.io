@@ -38,14 +38,15 @@ function setup() {
 
 
 function draw() {
-  
   // Show GIF if smite succeeded
-if (gameOver && !smiteFailed) {
-  goodMeme.show();
-  return;
+  if (gameOver && !smiteFailed) {
+    image(goodMeme, 0, 0, width, height);  
+    return; 
+  
 
-
+ 
 }
+
 
   // Background
   background(baron);

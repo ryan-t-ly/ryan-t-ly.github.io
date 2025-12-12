@@ -22,24 +22,17 @@ let colorPulse = 0;
 let badMeme; //jg diff
 let goodMeme; // happi cat
 
-
 function preload() {
   baron = loadImage("custombaron.png");    
   smiteIcon = loadImage("customsmite.png"); 
   soundFormats("mp3");
   badMeme= loadImage("jgdiff.jpg");
-  
+  goodMeme= loadImage("smitegood.gif"); //trying load image
   
 }
 
 function setup() {
   createCanvas(600, 600);
-
-  goodMeme = createImg("smitegood.gif");
-goodMeme.size(600, 600);
-goodMeme.position(0, 0);
-goodMeme.style("z-index", "9999"); // 🔥 put GIF on TOP of canvas
-goodMeme.hide();
 
 }
 

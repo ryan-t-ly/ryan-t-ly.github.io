@@ -12,6 +12,7 @@ let smiteFailed = false; // NEW: track if smite was incorrect
 
 let baron;
 let smiteIcon;
+let smiteSound;
 
 
 // flashing smite
@@ -26,27 +27,33 @@ function preload() {
   baron = loadImage("custombaron.png");    
   smiteIcon = loadImage("customsmite.png"); 
   soundFormats("mp3");
+ smiteSound = loadSound("bonkgood.mp3", soundLoaded, soundError);  
   badMeme= loadImage("jgdiff.jpg");
-  goodMeme= loadImage("smitegood.gif"); //trying load image
+  
   
 }
 
 function setup() {
   createCanvas(600, 600);
 
+  goodMeme = createImg("smitegood.gif");
+goodMeme.size(600, 600);
+goodMeme.position(0, 0);
+goodMeme.style("z-index", "9999"); // gif on canvas
+goodMeme.hide();
+
 }
 
 
 function draw() {
-  // Show GIF if smite succeeded
-  if (gameOver && !smiteFailed) {
-    image(goodMeme, 0, 0, width, height);  
-    return; 
   
+  // Show GIF if smite succeeded
+if (gameOver && !smiteFailed) {
+  goodMeme.show();
+  return;
 
- 
+
 }
-
 
   // Background
   background(baron);
@@ -166,7 +173,7 @@ function keyPressed() {
       gameOver = true;
 
 
-      
+      if (smiteSound.isLoaded()) smiteSound.play();
 
     } else {
       // FAILURE
